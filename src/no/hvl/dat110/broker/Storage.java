@@ -90,8 +90,8 @@ public class Storage {
 	public void addSubscriber(String user, String topic) {
 
 		// TODO: add the user as subscriber to the topic
-		
-		subscriptions.get(topic).add(user);
+		if (!subscriptions.get(topic).contains(user))
+			subscriptions.get(topic).add(user);
 		
 	}
 
