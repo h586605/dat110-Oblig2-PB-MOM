@@ -168,9 +168,11 @@ public class Dispatcher extends Stopable {
 		
 		Set<String> subscribers = storage.getSubscribers(topic);
 		
-		for (String i : subscribers) {
-			ClientSession session = storage.getSession(i);
-			session.send(msg);
+		if (!subscribers.isEmpty()) {
+			for (String i : subscribers) {
+				ClientSession session = storage.getSession(i);
+				session.send(msg);
+			}
 		}
 
 		// TODO: publish the message to clients subscribed to the topic
